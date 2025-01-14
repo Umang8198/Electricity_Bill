@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bill Fetcher For Rajasthan</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input, button { padding: 10px; margin: 10px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Fetch Bill Amount</h1>
+  
+  <label for="consumerNumber">Enter Consumer Number:</label>
+  <input type="text" id="consumerNumber" placeholder="Consumer Number">
+  
+  <button onclick="fetchBill()">Fetch Bill</button>
+  
+  <h3>Bill Amount: <span id="billAmount">-</span></h3>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
