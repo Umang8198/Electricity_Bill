@@ -2,8 +2,16 @@ let excelData = [];  // To store data from the Excel file
 // added comment
 // This function will be called to fetch the bill for the entered consumer number
 function fetchBill() {
+
+    if (excelData.length === 0) {
+    alert('Excel data is not loaded yet.');
+    return;
+  }
   const consumerNumber = document.getElementById('consumerNumber').value.trim();
   const billAmountElement = document.getElementById('billAmount');
+
+
+  
 
   
   if (!consumerNumber) {
