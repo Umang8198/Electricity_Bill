@@ -9,7 +9,10 @@
     /* General Body Styling */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f7fc;
+      background-image: url('image.png'); /* Path to the background image */
+      background-size: cover; /* Ensures the image covers the entire page */
+      background-position: center; /* Centers the background image */
+      background-attachment: fixed; /* Keeps the image fixed while scrolling */
       color: #333;
       margin: 0;
       padding: 20px;
@@ -21,7 +24,7 @@
 
     /* Container to center content */
     .container {
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       padding: 40px;
       border-radius: 10px;
