@@ -19,6 +19,10 @@ function fetchBill() {
     return;
   }
 
+      // Debug log for consumer number
+  console.log('Consumer Number:', consumerNumber);
+
+
   // Find the corresponding bill amount from the loaded data
   const entry = excelData.find(row => String(row['Consumer Number']).trim() === consumerNumber);
 
