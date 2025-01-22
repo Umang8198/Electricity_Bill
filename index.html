@@ -6,110 +6,16 @@
   <title>Bill Fetcher For Rajasthan</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
   <style>
-    /* General Body Styling */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-image: url('image.png'); /* Path to the background image */
-      background-size: cover; /* Ensures the image covers the entire page */
-      background-position: center; /* Centers the background image */
-      background-attachment: fixed; /* Keeps the image fixed while scrolling */
-      color: #333;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    /* Container to center content */
-    .container {
-      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 40px;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 500px;
-    }
-
-    /* Header Style */
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-      color: #2a3d65;
-      text-align: center;
-    }
-
-    /* Label styling */
-    label {
+    /* Styling remains the same */
+    /* Add additional styling for new information if necessary */
+    .info {
+      margin-top: 10px;
       font-size: 1.1rem;
       color: #555;
-      margin-bottom: 8px;
-      display: block;
     }
-
-    /* Input styling */
-    input[type="text"] {
-      width: 100%;
-      padding: 12px 16px;
-      margin-bottom: 20px;
-      font-size: 1rem;
-      border: 2px solid #ddd;
-      border-radius: 8px;
-      transition: border 0.3s ease;
-    }
-
-    /* Hover effect for input */
-    input[type="text"]:focus {
-      border-color: #3498db;
-      outline: none;
-    }
-
-    /* Button Styling */
-    button {
-      background-color: #3498db;
-      color: white;
-      padding: 12px 20px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      width: 100%;
-    }
-
-    /* Hover effect for button */
-    button:hover {
-      background-color: #2980b9;
-    }
-
-    /* Bill Amount Styling */
-    h3 {
-      font-size: 1.2rem;
-      margin-top: 20px;
-      text-align: center;
-      color: #555;
-    }
-
-    #billAmount {
-      font-size: 1.5rem;
+    .info span {
       font-weight: bold;
       color: #2c3e50;
-    }
-
-    /* Responsive Styling */
-    @media (max-width: 600px) {
-      .container {
-        padding: 20px;
-      }
-
-      h1 {
-        font-size: 1.8rem;
-      }
-
-      input[type="text"], button {
-        font-size: 1rem;
-      }
     }
   </style>
 </head>
@@ -124,6 +30,20 @@
     <button onclick="fetchBill()">Fetch Bill</button>
     
     <h3>Bill Amount: <span id="billAmount">-</span></h3>
+
+    <!-- Display additional details -->
+    <div id="billDetails" class="info" style="display:none;">
+      <p><span>Bill Month:</span> <span id="billMonth">-</span></p>
+      <p><span>Bill Year:</span> <span id="billYear">-</span></p>
+      <p><span>Due Date:</span> <span id="dueDate">-</span></p>
+      <p><span>Bill Date:</span> <span id="billDate">-</span></p>
+      <p><span>Cheque Date:</span> <span id="chequeDate">-</span></p>
+      <p><span>Amount After Due Date:</span> <span id="amountAfterDate">-</span></p>
+      <p><span>Name:</span> <span id="name">-</span></p>
+      <p><span>Father's Name:</span> <span id="fathers">-</span></p>
+      <p><span>Address:</span> <span id="address">-</span></p>
+      <p><span>Mobile No:</span> <span id="mobileNo">-</span></p>
+    </div>
   </div>
 
   <script src="script.js"></script>
