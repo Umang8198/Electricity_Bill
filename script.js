@@ -67,5 +67,54 @@ function loadExcelData() {
     });
 }
 
+//pdf code
+// Function to generate and download PDF
+function downloadPDF() {
+  const { jsPDF } = window.jspdf;  // Destructure jsPDF from the window object
+
+  const doc = new jsPDF();  // Create a new jsPDF instance
+  
+  // Add Title to PDF
+  doc.setFontSize(18);
+  doc.text("Bill Details", 14, 20);
+  
+  // Add content from the page to the PDF
+  const consumerNumber = document.getElementById('consumerNumber').value.trim();
+  const billAmount = document.getElementById('billAmount').textContent;
+  const billMonth = document.getElementById('billMonth').textContent;
+  const billYear = document.getElementById('billYear').textContent;
+  const dueDate = document.getElementById('dueDate').textContent;
+  const billDate = document.getElementById('billDate').textContent;
+  const chequeDate = document.getElementById('chequeDate').textContent;
+  const amountAfterDate = document.getElementById('amountAfterDate').textContent;
+  const name = document.getElementById('name').textContent;
+  const fathers = document.getElementById('fathers').textContent;
+  const address = document.getElementById('address').textContent;
+  const mobileNo = document.getElementById('mobileNo').textContent;
+  
+  let content = `
+    Consumer Number: ${consumerNumber}
+    Bill Amount: ${billAmount}
+    Bill Month: ${billMonth}
+    Bill Year: ${billYear}
+    Due Date: ${dueDate}
+    Bill Date: ${billDate}
+    Cheque Date: ${chequeDate}
+    Amount After Due Date: ${amountAfterDate}
+    Name: ${name}
+    Father's Name: ${fathers}
+    Address: ${address}
+    Mobile No: ${mobileNo}
+  `;
+
+  // Add the content to the PDF
+  doc.setFontSize(12);
+  doc.text(content, 14, 40);
+  
+  // Save the PDF
+  doc.save('bill_details.pdf');
+}
+
+
 // Load the Excel data when the page is loaded
 window.onload = loadExcelData;
