@@ -1,17 +1,8 @@
-// Function to format the date as dd-mm-yyyy
-function formatDate(date) {
-  if (!date) return '-'; // If the date is invalid, return a dash
-  
-  const d = new Date(date);
-  const day = String(d.getDate()).padStart(2, '0'); // Ensure two digits
-  const month = String(d.getMonth() + 1).padStart(2, '0'); // Get month (0-indexed)
-  const year = d.getFullYear();
-
-  return `${day}-${month}-${year}`;
-}
+let excelData = [];  // To store data from the Excel file
 
 // This function will be called to fetch the bill for the entered consumer number
 function fetchBill() {
+
   if (excelData.length === 0) {
     alert('Excel data is not loaded yet.');
     return;
@@ -41,9 +32,9 @@ function fetchBill() {
     // Fill in the details
     document.getElementById('billMonth').textContent = entry['bill_month'] || '-';
     document.getElementById('billYear').textContent = entry['bill_year'] || '-';
-    document.getElementById('dueDate').textContent = formatDate(entry['due_date']);
-    document.getElementById('billDate').textContent = formatDate(entry['bill_date']);
-    document.getElementById('chequeDate').textContent = formatDate(entry['chque_date']);
+    document.getElementById('dueDate').textContent = entry['due_date'] || '-';
+    document.getElementById('billDate').textContent = entry['bill_date'] || '-';
+    document.getElementById('chequeDate').textContent = entry['chque_date'] || '-';
     document.getElementById('amountAfterDate').textContent = entry['amount_after_date'] || '-';
     document.getElementById('name').textContent = entry['name'] || '-';
     document.getElementById('fathers').textContent = entry['fathers'] || '-';
