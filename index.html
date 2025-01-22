@@ -3,49 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galayy Rajasthan PHED</title>
+  <title>Bill Fetcher For Rajasthan</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
   <style>
     /* General Body Styling */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #6A11CB, #2575FC); /* Gradient background */
-      color: #fff;
+      background-color: #f4f4f4; /* Light grey background for eye-friendliness */
+      color: #333; /* Dark grey text color */
       margin: 0;
       padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      overflow: hidden;
-      box-sizing: border-box;
+      min-height: 100vh; /* Ensure full page height */
+      overflow-y: auto; /* Ensure page is scrollable */
     }
 
     /* Container Styling */
     .container {
-      background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent background */
+      background-color: #fff; /* White background for container */
       border-radius: 12px;
       padding: 40px 60px;
-      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
       width: 100%;
-      max-width: 450px;
+      max-width: 480px;
       text-align: center;
+      overflow: hidden; /* Ensures no content breaks out of the container */
     }
 
     /* Header Styling */
     h1 {
       font-size: 2.5rem;
-      color: #2a3d65;
-      margin-bottom: 30px;
-      font-weight: bold;
-      letter-spacing: 2px;
+      color: #2c3e50; /* Darker text for header */
+      margin-bottom: 25px;
+      font-weight: 600;
+      letter-spacing: 1px;
       text-transform: uppercase;
     }
 
     /* Label Styling */
     label {
-      font-size: 1.2rem;
-      color: #333;
+      font-size: 1.1rem;
+      color: #555;
       margin-bottom: 8px;
       display: block;
       font-weight: bold;
@@ -57,22 +57,22 @@
       padding: 15px 20px;
       margin-bottom: 25px;
       font-size: 1.1rem;
-      border: 2px solid #ddd;
+      border: 2px solid #ccc;
       border-radius: 10px;
-      background-color: #f7f7f7;
+      background-color: #f9f9f9;
       transition: border 0.3s ease, background-color 0.3s ease;
     }
 
     /* Focus effect on input */
     input[type="text"]:focus {
-      border-color: #6A11CB;
+      border-color: #3498db;
       outline: none;
       background-color: #fff;
     }
 
     /* Button Styling */
     button {
-      background-color: #6A11CB;
+      background-color: #3498db; /* Light blue */
       color: white;
       padding: 15px 25px;
       font-size: 1.2rem;
@@ -86,28 +86,28 @@
 
     /* Hover effect for button */
     button:hover {
-      background-color: #2575FC;
+      background-color: #2980b9; /* Darker blue on hover */
     }
 
     /* Bill Details Section */
     .info {
       text-align: left;
       color: #333;
-      margin-top: 30px;
-      padding: 10px;
-      background-color: #f7f7f7;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f9f9f9;
       border-radius: 8px;
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     .info span {
       font-weight: bold;
-      color: #2575FC;
+      color: #3498db; /* Light blue */
     }
 
     .info p {
-      margin: 10px 0;
-      font-size: 1.1rem;
+      margin: 12px 0;
+      font-size: 1rem;
     }
 
     /* Responsive Styling */
@@ -121,7 +121,7 @@
       }
 
       button {
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
 
       input[type="text"], button {
@@ -138,7 +138,7 @@
 <body>
 
   <div class="container">
-    <h1>Fetch Bill Amount</h1>
+    <h1>GALAXY RAJASTHAN PHED</h1>
     
     <label for="consumerNumber">Enter Consumer Number:</label>
     <input type="text" id="consumerNumber" placeholder="Consumer Number">
