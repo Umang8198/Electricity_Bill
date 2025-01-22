@@ -38,19 +38,20 @@ function fetchBill() {
 
 // This function loads and parses the Excel file from GitHub repository
 function loadExcelData() {
-  fetch('data.xlsx')  // Path to the Excel file in your GitHub repository
-    .then(response => response.arrayBuffer())  // Fetch and convert the file to an array buffer
-    .then(data => {
-      const workbook = XLSX.read(data, { type: 'array' });  // Parse the Excel data
-      const sheet = workbook.Sheets[workbook.SheetNames[0]];  // Get the first sheet
-      const jsonData = XLSX.utils.sheet_to_json(sheet);  // Convert the sheet to JSON
-      
-      excelData = jsonData;  // Store the parsed data in the global variable
-      console.log(excelData);  // Optional: Log data to the console for debugging
-    })
-    .catch(error => {
-      console.error('Error loading the Excel file:', error);
-    });
+fetch('data.xlsx?' + new Date().getTime())
+.then(response => response.arrayBuffer())
+.then(data => {
+  const workbook = XLSX.read(data, { type: 'array' });
+  const sheet = workbook.Sheets[workbook.SheetNames[0]];
+  const jsonData = XLSX.utils.sheet_to_json(sheet);
+
+  excelData = jsonData;
+  console.log(excelData);
+})
+.catch(error => {
+  console.error('Error loading the Excel file:', error);
+});
+
 }
 
 // Load the Excel file when the page is loaded
