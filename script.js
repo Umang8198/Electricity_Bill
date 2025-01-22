@@ -27,7 +27,7 @@ function fetchBill() {
 
   if (entry) {
     // Display Bill Amount
-    billAmountElement.textContent = entry['Amount'];
+    billAmountElement.textContent = entry['Bill Amount'];
 
     // Display Additional Information
     document.getElementById('billMonth').textContent = entry['bill_month'] || '-';
