@@ -3,26 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bill Fetcher For Rajasthan</title>
+  <title>Galayy Rajasthan PHED</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
   <style>
-    /* Styling remains the same */
-    /* Add additional styling for new information if necessary */
-    .info {
-      margin-top: 10px;
-      font-size: 1.1rem;
-      color: #555;
+    /* General Body Styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6A11CB, #2575FC); /* Gradient background */
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      box-sizing: border-box;
     }
+
+    /* Container Styling */
+    .container {
+      background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent background */
+      border-radius: 12px;
+      padding: 40px 60px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 450px;
+      text-align: center;
+    }
+
+    /* Header Styling */
+    h1 {
+      font-size: 2.5rem;
+      color: #2a3d65;
+      margin-bottom: 30px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Label Styling */
+    label {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 8px;
+      display: block;
+      font-weight: bold;
+    }
+
+    /* Input Field Styling */
+    input[type="text"] {
+      width: 100%;
+      padding: 15px 20px;
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      background-color: #f7f7f7;
+      transition: border 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Focus effect on input */
+    input[type="text"]:focus {
+      border-color: #6A11CB;
+      outline: none;
+      background-color: #fff;
+    }
+
+    /* Button Styling */
+    button {
+      background-color: #6A11CB;
+      color: white;
+      padding: 15px 25px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    /* Hover effect for button */
+    button:hover {
+      background-color: #2575FC;
+    }
+
+    /* Bill Details Section */
+    .info {
+      text-align: left;
+      color: #333;
+      margin-top: 30px;
+      padding: 10px;
+      background-color: #f7f7f7;
+      border-radius: 8px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
     .info span {
       font-weight: bold;
-      color: #2c3e50;
+      color: #2575FC;
     }
+
+    .info p {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px 30px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      button {
+        font-size: 1rem;
+      }
+
+      input[type="text"], button {
+        font-size: 1.1rem;
+      }
+
+      .info {
+        font-size: 1rem;
+      }
+    }
+
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>Fetch Bill Amount For Rajasthan</h1>
+    <h1>Fetch Bill Amount</h1>
     
     <label for="consumerNumber">Enter Consumer Number:</label>
     <input type="text" id="consumerNumber" placeholder="Consumer Number">
