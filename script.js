@@ -7,6 +7,8 @@ function fetchBill() {
     return;
   }
 
+  
+
   const consumerNumber = document.getElementById('consumerNumber').value.trim();
   const billAmountElement = document.getElementById('billAmount');
   const billDetailsElement = document.getElementById('billDetails');
@@ -27,6 +29,7 @@ function fetchBill() {
 
   if (entry) {
     // Display Bill Amount
+    //yoy
     billAmountElement.textContent = entry['bill_amount'] || '-';  // Use 'bill_amount' to display the bill
 
     // Display Additional Information
