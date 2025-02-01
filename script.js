@@ -1,9 +1,8 @@
 let excelData = [];  // To store data from the Excel file
-let isDataLoaded = false; // Track whether data has been loaded
 
 // Fetch Bill Function
 function fetchBill() {
-  if (!isDataLoaded) {
+  if (excelData.length === 0) {
     alert('Excel data is not loaded yet.');
     return;
   }
@@ -28,7 +27,7 @@ function fetchBill() {
 
   if (entry) {
     // Display Bill Amount
-    billAmountElement.textContent = entry['bill_amount'] || '-'; 
+    billAmountElement.textContent = entry['bill_amount'] || '-';  // Use 'bill_amount' to display the bill
 
     // Display Additional Information
     document.getElementById('billMonth').textContent = entry['bill_month'] || '-';
@@ -61,14 +60,12 @@ function loadExcelData() {
       const jsonData = XLSX.utils.sheet_to_json(sheet);
 
       excelData = jsonData;
-      isDataLoaded = true; // Set data as loaded
       console.log(excelData);  // Log data to check the structure
     })
     .catch(error => {
       console.error('Error loading the Excel file:', error);
     });
 }
-
 
 //pdf code
 // Function to generate and download PDF
