@@ -32,8 +32,19 @@ function fetchBill() {
     // Display Additional Information
     document.getElementById('billMonth').textContent = entry['bill_month'] || '-';
     document.getElementById('billYear').textContent = entry['bill_year'] || '-';
-    document.getElementById('dueDate').textContent = entry['due_date'] || '-';
-    document.getElementById('billDate').textContent = entry['bill_date'] || '-';
+    // document.getElementById('dueDate').textContent = entry['due_date'] || '-';
+
+// Convert Excel serial number to JS Date and format it (for Due Date)
+    const dueDate = entry['due_date'];
+    const formattedDueDate = dueDate ? excelDateToJSDate(dueDate).toLocaleDateString() : '-';
+    document.getElementById('dueDate').textContent = formattedDueDate;
+
+    // Convert Excel serial number to JS Date and format it (for Bill Date)
+    const billDate = entry['bill_date'];
+    const formattedBillDate = billDate ? excelDateToJSDate(billDate).toLocaleDateString() : '-';
+    document.getElementById('billDate').textContent = formattedBillDate;
+    
+    // document.getElementById('billDate').textContent = entry['bill_date'] || '-';
     document.getElementById('chequeDate').textContent = entry['chque_date'] || '-';
     document.getElementById('amountAfterDate').textContent = entry['amount_after_date'] || '-';
     document.getElementById('name').textContent = entry['name'] || '-';
@@ -48,6 +59,13 @@ function fetchBill() {
     billAmountElement.textContent = 'No record found';
     billDetailsElement.style.display = 'none';
   }
+}
+
+//helper function
+function excelDateToJSDate(serial) {
+  const epoch = new Date(1900, 0, 1);  // Excel epoch starts from 1900-01-01
+  const date = new Date(epoch.getTime() + (serial - 2) * 86400000);  // Excel date is offset by 2 days (due to 1900 leap year bug)
+  return date;
 }
 
 // Load Excel Data from GitHub (or your server)
