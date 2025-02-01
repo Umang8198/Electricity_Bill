@@ -1,13 +1,12 @@
 let excelData = [];  // To store data from the Excel file
+let isDataLoaded = false; // Track whether data has been loaded
 
 // Fetch Bill Function
 function fetchBill() {
-  if (excelData.length === 0) {
+  if (!isDataLoaded) {
     alert('Excel data is not loaded yet.');
     return;
   }
-
-  
 
   const consumerNumber = document.getElementById('consumerNumber').value.trim();
   const billAmountElement = document.getElementById('billAmount');
@@ -29,8 +28,7 @@ function fetchBill() {
 
   if (entry) {
     // Display Bill Amount
-    //yoy
-    billAmountElement.textContent = entry['bill_amount'] || '-';  // Use 'bill_amount' to display the bill
+    billAmountElement.textContent = entry['bill_amount'] || '-'; 
 
     // Display Additional Information
     document.getElementById('billMonth').textContent = entry['bill_month'] || '-';
@@ -63,12 +61,14 @@ function loadExcelData() {
       const jsonData = XLSX.utils.sheet_to_json(sheet);
 
       excelData = jsonData;
+      isDataLoaded = true; // Set data as loaded
       console.log(excelData);  // Log data to check the structure
     })
     .catch(error => {
       console.error('Error loading the Excel file:', error);
     });
 }
+
 
 //pdf code
 // Function to generate and download PDF
