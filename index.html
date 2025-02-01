@@ -5,119 +5,143 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bill Fetcher For Rajasthan</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     /* General Body Styling */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-image: url('image.png'); /* Path to the background image */
-      background-size: cover; /* Ensures the image covers the entire page */
-      background-position: center; /* Centers the background image */
-      background-attachment: fixed; /* Keeps the image fixed while scrolling */
-      color: #333;
+      background-color: #f4f4f4; /* Light grey background for eye-friendliness */
+      color: #333; /* Dark grey text color */
       margin: 0;
-      padding: 20px;
+      padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh; /* Ensure full page height */
+      overflow-y: auto; /* Ensure page is scrollable */
     }
 
-    /* Container to center content */
+    /* Container Styling */
     .container {
-      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 40px;
-      border-radius: 10px;
+      background-color: #fff; /* White background for container */
+      border-radius: 12px;
+      padding: 40px 60px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
       width: 100%;
-      max-width: 500px;
-    }
-
-    /* Header Style */
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-      color: #2a3d65;
+      max-width: 480px;
       text-align: center;
+      overflow: hidden; /* Ensures no content breaks out of the container */
     }
 
-    /* Label styling */
+    /* Header Styling */
+    h1 {
+      font-size: 2.5rem;
+      color: #2c3e50; /* Darker text for header */
+      margin-bottom: 25px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Label Styling */
     label {
       font-size: 1.1rem;
       color: #555;
       margin-bottom: 8px;
       display: block;
+      font-weight: bold;
     }
 
-    /* Input styling */
+    /* Input Field Styling */
     input[type="text"] {
       width: 100%;
-      padding: 12px 16px;
-      margin-bottom: 20px;
-      font-size: 1rem;
-      border: 2px solid #ddd;
-      border-radius: 8px;
-      transition: border 0.3s ease;
+      padding: 15px 20px;
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      transition: border 0.3s ease, background-color 0.3s ease;
     }
 
-    /* Hover effect for input */
+    /* Focus effect on input */
     input[type="text"]:focus {
       border-color: #3498db;
       outline: none;
+      background-color: #fff;
     }
 
     /* Button Styling */
     button {
-      background-color: #3498db;
+      background-color: #3498db; /* Light blue */
       color: white;
-      padding: 12px 20px;
-      font-size: 1.1rem;
+      padding: 15px 25px;
+      font-size: 1.2rem;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease;
       width: 100%;
+      margin-bottom: 30px;
     }
 
     /* Hover effect for button */
     button:hover {
-      background-color: #2980b9;
+      background-color: #2980b9; /* Darker blue on hover */
     }
 
-    /* Bill Amount Styling */
-    h3 {
-      font-size: 1.2rem;
+    /* Bill Details Section */
+    .info {
+      text-align: left;
+      color: #333;
       margin-top: 20px;
-      text-align: center;
-      color: #555;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    #billAmount {
-      font-size: 1.5rem;
+    .info span {
       font-weight: bold;
-      color: #2c3e50;
+      color: #3498db; /* Light blue */
+    }
+
+    .info p {
+      margin: 12px 0;
+      font-size: 1rem;
     }
 
     /* Responsive Styling */
     @media (max-width: 600px) {
       .container {
-        padding: 20px;
+        padding: 20px 30px;
       }
 
       h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
+      }
+
+      button {
+        font-size: 1.1rem;
       }
 
       input[type="text"], button {
+        font-size: 1.1rem;
+      }
+
+      .info {
         font-size: 1rem;
       }
     }
+
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>Fetch Bill Amount For Rajasthan</h1>
+    <h1>GALAXY RAJASTHAN PHED</h1>
     
     <label for="consumerNumber">Enter Consumer Number:</label>
     <input type="text" id="consumerNumber" placeholder="Consumer Number">
@@ -125,7 +149,26 @@
     <button onclick="fetchBill()">Fetch Bill</button>
     
     <h3>Bill Amount: <span id="billAmount">-</span></h3>
+
+    <!-- Display additional details -->
+    <div id="billDetails" class="info" style="display:none;">
+      <p><span>Bill Month:</span> <span id="billMonth">-</span></p>
+      <p><span>Bill Year:</span> <span id="billYear">-</span></p>
+      <p><span>Due Date:</span> <span id="dueDate">-</span></p>
+      <p><span>Bill Date:</span> <span id="billDate">-</span></p>
+      <p><span>Cheque Date:</span> <span id="chequeDate">-</span></p>
+      <p><span>Amount After Due Date:</span> <span id="amountAfterDate">-</span></p>
+      <p><span>Name:</span> <span id="name">-</span></p>
+      <p><span>Father's Name:</span> <span id="fathers">-</span></p>
+      <p><span>Address:</span> <span id="address">-</span></p>
+      <p><span>Mobile No:</span> <span id="mobileNo">-</span></p>
+    </div>
+
+     <!-- Download PDF Button -->
+    <button onclick="downloadPDF()">Download PDF</button>
   </div>
+
+  
 
   <script src="script.js"></script>
 
